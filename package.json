@@ -1,0 +1,38 @@
+{
+  "author": "evan@evantahler.com",
+  "name": "docker-multi-arch-test",
+  "version": "0.0.1",
+  "private": false,
+  "engines": {
+    "node": "16.x.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evantahler/docker-multi-arch-test.git",
+    "directory": "core"
+  },
+  "main": "dist/index",
+  "types": "dist/index",
+  "scripts": {
+    "build": "tsc",
+    "lint": "prettier --check src",
+    "watch": "tsc --watch",
+    "start": "node ./dist/index.js",
+    "pretest": "npm run lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/node": "*",
+    "typescript": "4.6.3"
+  },
+  "devDependencies": {
+    "@types/jest": "27.4.1",
+    "axios": "0.26.1",
+    "jest": "27.5.1",
+    "prettier": "2.6.1",
+    "ts-jest": "27.1.4"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}
