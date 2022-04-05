@@ -1,0 +1,25 @@
+name: publish
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+          # token: ${{ secrets.BOT_GITHUB_PAT }}
+          fetch-depth: 0
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - run: git config --global user.email "hello@evantahler.com"
+      - run: git config --global user.name "Evan Bot"
+      - name: publish
+        run: ./bin/publish
