@@ -7,8 +7,7 @@ VERSION=`cat package.json | jq -r .version`
 echo "Publishing version $IMAGE:v$VERSION to Docker..."
 
 docker buildx create --use
-docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t $IMAGE:v$VERSION -t $IMAGE --push . # without a repo:tag means 'latest'
+docker buildx build --platform linux/arm/v7,linux/arm64/v8,linux/amd64 -t $IMAGE:v$VERSION -t $IMAGE --push . # without a repo{:tag} means 'latest'
 docker buildx stop
 
-git commit -am "Commiting version $VERSION"
 git push
